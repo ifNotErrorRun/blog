@@ -6,7 +6,9 @@
   "scripts": {
     "generate-routes": "tsr generate",
     "watch-routes": "tsr watch",
-    "dev": "pnpm run watch-routes && vite",
+    "dev": "vite --port 4321",
+    "dev:routes": "pnpm run watch-routes",
+    "dev:server": "netlify dev",
     "build": "pnpm run generate-routes && tsc -b && vite build",
     "lint": "biome lint .",
     "preview": "vite preview"

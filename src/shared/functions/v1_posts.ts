@@ -7,20 +7,20 @@ export const config: Config = {
 };
 
 export default async (req: Request, _context: Context) => {
-  if (req.method === "GET") {
-    const posts = await fetchPosts();
-    return new Response(JSON.stringify(posts), {
-      status: 200,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+  console.log("GET /api/v1/posts");
+  const SUPABASE_URL = process.env["SUPABASE_URL"];
+  if (!SUPABASE_URL) {
+    throw new Error("SUPABASE_URL is not defined");
   }
-  throw new Response("Method Not Allowed", {
-    status: 405,
+  const SUPABASE_ANON_KEY = process.env["SUPABASE_ANON_KEY"];
+  if (!SUPABASE_ANON_KEY) {
+    throw new Error("SUPABASE_ANON_KEY is not defined");
+  }
+  const posts = await fetchPosts();
+  return new Response(JSON.stringify(posts), {
+    status: 200,
     headers: {
-      "Content-Type": "text/plain",
-      "Access-Control-Allow-Origin": "*",
+      "Content-Type": "application/json",
     },
   });
 };

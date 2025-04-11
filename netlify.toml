@@ -15,4 +15,4 @@
 
 [functions]
   directory = "src/shared/functions"
-  node_bundler = "esbuild" # Netlify 서버리스 함수의 번들러를 지정
+  
