@@ -1,5 +1,5 @@
 import { QueryClientProvider } from '@tanstack/react-query';
-import { queryClient } from '@/shared/lib/react-query/queryClient';
+import { queryClient } from '@/shared/libs/react-query/queryClient';
 import PostsList from '../interactions/posts-list';
 
 const PostsBlock = () => {
