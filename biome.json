@@ -21,7 +21,12 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true
+      "recommended": true,
+      "suspicious": {
+        "noDebugger": "off",
+        "noConsoleLog": "warn",
+        "noExplicitAny": "warn"
+      }
     }
   },
   "javascript": {
