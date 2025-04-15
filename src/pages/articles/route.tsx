@@ -1,9 +1,14 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Outlet } from '@tanstack/react-router';
 
-export const Route = createFileRoute("/articles")({
-  component: RouteComponent,
+export const Route = createFileRoute('/articles')({
+	component: RouteComponent,
 });
 
 function RouteComponent() {
-  return <div>Hello "/articles"!</div>;
+	return (
+		<div className='flex flex-col items-center justify-center gap-y-3 mx-6'>
+			<h3 className='text-2xl font-bold'>Articles</h3>
+			<Outlet />
+		</div>
+	);
 }

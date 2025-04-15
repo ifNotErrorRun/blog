@@ -1,5 +1,5 @@
 import api from "@/shared/libs/axios/api";
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import type { Post } from "../schemas/post";
 
 const usePosts = () => {
@@ -7,9 +7,10 @@ const usePosts = () => {
     data: posts = [],
     isLoading,
     error,
-  } = useQuery<Post[], Error>({
+  } = useSuspenseQuery<Post[], Error>({
     queryKey: ["posts"],
     queryFn: () => api.get("/posts").then((res) => res.data),
+
   });
 
   return {

@@ -7,12 +7,11 @@ export const config: Config = {
 };
 
 export default async (req: Request, _context: Context) => {
-  console.log("GET /api/v1/posts");
-  const SUPABASE_URL = process.env["SUPABASE_URL"];
+  const SUPABASE_URL = process.env.SUPABASE_URL;
   if (!SUPABASE_URL) {
     throw new Error("SUPABASE_URL is not defined");
   }
-  const SUPABASE_ANON_KEY = process.env["SUPABASE_ANON_KEY"];
+  const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
   if (!SUPABASE_ANON_KEY) {
     throw new Error("SUPABASE_ANON_KEY is not defined");
   }
@@ -37,5 +36,10 @@ const fetchPosts = async () => {
   if (!data) {
     throw new Error("No data found");
   }
-  return data;
+  return data.map((p) => {
+    return {
+      ...p,
+      frontmatter: JSON.parse(p.frontmatter),
+    }
+  });
 };
