@@ -1,4 +1,4 @@
-import { PostCard } from '@/features/post/blocks/post-card';
+import { PostCard } from '@/features/post/ui/post-card';
 import usePosts from '@/features/post/queries/use-posts';
 
 export default function PostList() {

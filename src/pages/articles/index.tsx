@@ -1,4 +1,4 @@
-import { PostSkeleton } from '@/features/post/blocks/post-skeleton';
+import { PostSkeleton } from '@/features/post/ui/post-skeleton';
 import { createFileRoute } from '@tanstack/react-router';
 import { lazy, Suspense } from 'react';
 
