@@ -4,7 +4,7 @@ import { RouterProvider, createRouter } from '@tanstack/react-router';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { NuqsAdapter } from 'nuqs/adapters/react';
 import { ThemeProvider } from './provider/theme-provider';
-import { queryClient } from '@/shared/libs/react-query/queryClient.ts';
+import { queryClient } from '@/shared/libs/react-query/query-client';
 import { routeTree } from '@/shared/libs/router/routeTree.gen.ts';
 import '@/shared/styles/global.css';
 

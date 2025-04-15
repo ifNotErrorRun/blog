@@ -36,10 +36,5 @@ const fetchPosts = async () => {
   if (!data) {
     throw new Error("No data found");
   }
-  return data.map((p) => {
-    return {
-      ...p,
-      frontmatter: JSON.parse(p.frontmatter),
-    }
-  });
+  return data;
 };
