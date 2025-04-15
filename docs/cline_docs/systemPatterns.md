@@ -7,31 +7,35 @@
 ```
 /docs - 문서화
 /src
+  /app - 애플리케이션 진입점
   /features - 기능별 구성 요소 
     /[feature_name] - 각 기능별 폴더
       /blocks - 기능별 구성 요소
       /containers - 기능별 컨테이너
       /interactions - 기능별 상호작용
-      /apis - 기능별 API 호출
-      /styles - 기능별 스타일
+      /queries - 기능별 API 호출
+      /schemas - 기능별 스키마 정의
   /pages - 페이지 구성 요소 (파일 기반 라우팅)
   /shared - 공유 구성 요소
-    /apis - API 호출
     /assets - 이미지 및 기타 정적 자산
     /components - 재사용 가능한 구성 요소
+      /blocks - 재사용 가능한 블록
       /containers - 재사용 가능한 컨테이너
       /interactions - 재사용 가능한 상호작용
+      /layouts - 레이아웃 구성 요소
       /ui - Shadcn/UI 구성 요소
     /constants - 상수 및 설정
-    /layouts - 레이아웃 구성 요소
-    /lib - 라이브러리 및 헬퍼 함수
-    /schemas - 데이터베이스 스키마
+    /functions - Netlify serverless 함수
+    /libs - 라이브러리 및 헬퍼 함수
+      /axios - Axios 인스턴스 및 설정
+      /react-query - React Query 설정
+      /supabase - Supabase 클라이언트 설정
+      /router - tanstack router 설정
+      /shadcn - Shadcn/UI 설정
     /stores - 상태 관리 (Zustand)
     /styles - Tailwind CSS 스타일
     /types - TypeScript 타입 정의
-    /utils - 유틸리티 함수 및 상수
   /widgets - 재사용 가능한 구성 요소
-  middleware.ts - 미들웨어 (인증, 권한 부여)
 ```
 
 ## 주요 디자인 패턴

@@ -11,14 +11,31 @@
 // Import Routes
 
 import { Route as rootRoute } from './../../../pages/__root'
-import { Route as ArticlesImport } from './../../../pages/articles'
+import { Route as ContactRouteImport } from './../../../pages/contact/route'
+import { Route as ArticlesRouteImport } from './../../../pages/articles/route'
+import { Route as AboutRouteImport } from './../../../pages/about/route'
 import { Route as IndexImport } from './../../../pages/index'
+import { Route as ContactIndexImport } from './../../../pages/contact/index'
+import { Route as ArticlesIndexImport } from './../../../pages/articles/index'
+import { Route as AboutIndexImport } from './../../../pages/about/index'
 
 // Create/Update Routes
 
-const ArticlesRoute = ArticlesImport.update({
+const ContactRouteRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ArticlesRouteRoute = ArticlesRouteImport.update({
   id: '/articles',
   path: '/articles',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AboutRouteRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -26,6 +43,24 @@ const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRoute,
+} as any)
+
+const ContactIndexRoute = ContactIndexImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ContactRouteRoute,
+} as any)
+
+const ArticlesIndexRoute = ArticlesIndexImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ArticlesRouteRoute,
+} as any)
+
+const AboutIndexRoute = AboutIndexImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AboutRouteRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -39,51 +74,153 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRoute
+    }
     '/articles': {
       id: '/articles'
       path: '/articles'
       fullPath: '/articles'
-      preLoaderRoute: typeof ArticlesImport
+      preLoaderRoute: typeof ArticlesRouteImport
       parentRoute: typeof rootRoute
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRoute
+    }
+    '/about/': {
+      id: '/about/'
+      path: '/'
+      fullPath: '/about/'
+      preLoaderRoute: typeof AboutIndexImport
+      parentRoute: typeof AboutRouteImport
+    }
+    '/articles/': {
+      id: '/articles/'
+      path: '/'
+      fullPath: '/articles/'
+      preLoaderRoute: typeof ArticlesIndexImport
+      parentRoute: typeof ArticlesRouteImport
+    }
+    '/contact/': {
+      id: '/contact/'
+      path: '/'
+      fullPath: '/contact/'
+      preLoaderRoute: typeof ContactIndexImport
+      parentRoute: typeof ContactRouteImport
     }
   }
 }
 
 // Create and export the route tree
 
+interface AboutRouteRouteChildren {
+  AboutIndexRoute: typeof AboutIndexRoute
+}
+
+const AboutRouteRouteChildren: AboutRouteRouteChildren = {
+  AboutIndexRoute: AboutIndexRoute,
+}
+
+const AboutRouteRouteWithChildren = AboutRouteRoute._addFileChildren(
+  AboutRouteRouteChildren,
+)
+
+interface ArticlesRouteRouteChildren {
+  ArticlesIndexRoute: typeof ArticlesIndexRoute
+}
+
+const ArticlesRouteRouteChildren: ArticlesRouteRouteChildren = {
+  ArticlesIndexRoute: ArticlesIndexRoute,
+}
+
+const ArticlesRouteRouteWithChildren = ArticlesRouteRoute._addFileChildren(
+  ArticlesRouteRouteChildren,
+)
+
+interface ContactRouteRouteChildren {
+  ContactIndexRoute: typeof ContactIndexRoute
+}
+
+const ContactRouteRouteChildren: ContactRouteRouteChildren = {
+  ContactIndexRoute: ContactIndexRoute,
+}
+
+const ContactRouteRouteWithChildren = ContactRouteRoute._addFileChildren(
+  ContactRouteRouteChildren,
+)
+
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/articles': typeof ArticlesRoute
+  '/about': typeof AboutRouteRouteWithChildren
+  '/articles': typeof ArticlesRouteRouteWithChildren
+  '/contact': typeof ContactRouteRouteWithChildren
+  '/about/': typeof AboutIndexRoute
+  '/articles/': typeof ArticlesIndexRoute
+  '/contact/': typeof ContactIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/articles': typeof ArticlesRoute
+  '/about': typeof AboutIndexRoute
+  '/articles': typeof ArticlesIndexRoute
+  '/contact': typeof ContactIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/articles': typeof ArticlesRoute
+  '/about': typeof AboutRouteRouteWithChildren
+  '/articles': typeof ArticlesRouteRouteWithChildren
+  '/contact': typeof ContactRouteRouteWithChildren
+  '/about/': typeof AboutIndexRoute
+  '/articles/': typeof ArticlesIndexRoute
+  '/contact/': typeof ContactIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/articles'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/articles'
+    | '/contact'
+    | '/about/'
+    | '/articles/'
+    | '/contact/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/articles'
-  id: '__root__' | '/' | '/articles'
+  to: '/' | '/about' | '/articles' | '/contact'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/articles'
+    | '/contact'
+    | '/about/'
+    | '/articles/'
+    | '/contact/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ArticlesRoute: typeof ArticlesRoute
+  AboutRouteRoute: typeof AboutRouteRouteWithChildren
+  ArticlesRouteRoute: typeof ArticlesRouteRouteWithChildren
+  ContactRouteRoute: typeof ContactRouteRouteWithChildren
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ArticlesRoute: ArticlesRoute,
+  AboutRouteRoute: AboutRouteRouteWithChildren,
+  ArticlesRouteRoute: ArticlesRouteRouteWithChildren,
+  ContactRouteRoute: ContactRouteRouteWithChildren,
 }
 
 export const routeTree = rootRoute
@@ -97,14 +234,43 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/articles"
+        "/about",
+        "/articles",
+        "/contact"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
+    "/about": {
+      "filePath": "about/route.tsx",
+      "children": [
+        "/about/"
+      ]
+    },
     "/articles": {
-      "filePath": "articles.tsx"
+      "filePath": "articles/route.tsx",
+      "children": [
+        "/articles/"
+      ]
+    },
+    "/contact": {
+      "filePath": "contact/route.tsx",
+      "children": [
+        "/contact/"
+      ]
+    },
+    "/about/": {
+      "filePath": "about/index.tsx",
+      "parent": "/about"
+    },
+    "/articles/": {
+      "filePath": "articles/index.tsx",
+      "parent": "/articles"
+    },
+    "/contact/": {
+      "filePath": "contact/index.tsx",
+      "parent": "/contact"
     }
   }
 }
