@@ -4,10 +4,14 @@ import {
 	NavigationMenuLink,
 	NavigationMenuList,
 } from '@/shared/components/ui/navigation-menu';
-import { Link } from '@tanstack/react-router';
+import { Link, useNavigate } from '@tanstack/react-router';
 import GithubLink from '@/shared/assets/icons/github-mark.svg';
+import { Button } from '@/shared/components/ui/button';
 
 export default function GNB() {
+	const navigate = useNavigate({});
+	const writeArticle = () => navigate({ to: '/articles/new' });
+
 	return (
 		<>
 			<NavigationMenu>
@@ -48,8 +52,10 @@ export default function GNB() {
 							</a>
 						</NavigationMenuLink>
 					</NavigationMenuItem>
+					<NavigationMenuItem>
+						<Button onClick={writeArticle}>Write</Button>
+					</NavigationMenuItem>
 				</NavigationMenuList>
-				{/* <ModeToggle /> */}
 			</NavigationMenu>
 		</>
 	);
