@@ -25,11 +25,21 @@
       "suspicious": {
         "noDebugger": "off",
         "noConsoleLog": "warn",
-        "noExplicitAny": "warn"
+        "noExplicitAny": "warn",
+        "noArrayIndexKey": "warn"
       },
       "style": {
         "useImportType": "warn",
-        "noNamespaceImport": "warn"
+        "noNamespaceImport": "warn",
+        "noInferrableTypes": "warn",
+        "noUselessElse": "warn"
+      },
+      "complexity": {
+        "noForEach": "warn"
+      },
+      "a11y": {
+        "useSemanticElements": "warn",
+        "noNoninteractiveTabindex": "warn"
       }
     }
   },
