@@ -32,14 +32,21 @@
         "useImportType": "warn",
         "noNamespaceImport": "warn",
         "noInferrableTypes": "warn",
-        "noUselessElse": "warn"
+        "noUselessElse": "warn",
+        "useNumberNamespace": "warn",
+        "useExponentiationOperator": "warn"
       },
       "complexity": {
         "noForEach": "warn"
       },
       "a11y": {
         "useSemanticElements": "warn",
-        "noNoninteractiveTabindex": "warn"
+        "noNoninteractiveTabindex": "warn",
+        "noSvgWithoutTitle": "warn",
+        "useButtonType": "warn"
+      },
+      "correctness": {
+        "useExhaustiveDependencies": "warn"
       }
     }
   },

@@ -26,7 +26,7 @@ import {
 import { Separator } from '@/shared/components/tiptap-ui/tiptap-ui-primitive/separator';
 
 // --- Styles ---
-import '@/components/tiptap-ui/link-popover/link-popover.scss';
+import '@/shared/components/tiptap-ui/tiptap-ui/link-popover/link-popover.scss';
 
 export interface LinkHandlerProps {
 	editor: Editor | null;

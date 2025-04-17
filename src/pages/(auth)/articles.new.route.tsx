@@ -1,16 +1,17 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { useEditor, EditorContent } from '@tiptap/react';
-import StarterKit from '@tiptap/starter-kit';
+import { SimpleEditor } from '@/shared/components/tiptap-ui/tiptap-templates/simple/simple-editor';
+import { useState } from 'react';
 
 export const Route = createFileRoute('/(auth)/articles/new')({
 	component: RouteComponent,
 });
 
 function RouteComponent() {
-	const editor = useEditor({
-		extensions: [StarterKit],
-		content: '<p>Hello World!</p>',
-	});
+	const [content, setContent] = useState({});
+
+	const handleSave = (newContent: any) => {
+		setContent(newContent);
+	};
 
 	return (
 		<>
@@ -18,7 +19,7 @@ function RouteComponent() {
 				<h3 className='text-2xl font-bold'>New Article</h3>
 				<p className='text-sm text-gray-500'>Create a new article</p>
 				<div className='card'>
-					<EditorContent editor={editor} />
+					<SimpleEditor content={content} onSave={handleSave} />
 				</div>
 			</div>
 		</>

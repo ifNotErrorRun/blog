@@ -29,10 +29,10 @@ import {
 
 // --- Tiptap Node ---
 import { ImageUploadNode } from '@/shared/components/tiptap-ui/tiptap-node/image-upload-node/image-upload-node-extension';
-import '@/components/tiptap-node/code-block-node/code-block-node.scss';
-import '@/components/tiptap-node/list-node/list-node.scss';
-import '@/components/tiptap-node/image-node/image-node.scss';
-import '@/components/tiptap-node/paragraph-node/paragraph-node.scss';
+import '@/shared/components/tiptap-ui/tiptap-node/code-block-node/code-block-node.scss';
+import '@/shared/components/tiptap-ui/tiptap-node/list-node/list-node.scss';
+import '@/shared/components/tiptap-ui/tiptap-node/image-node/image-node.scss';
+import '@/shared/components/tiptap-ui/tiptap-node/paragraph-node/paragraph-node.scss';
 
 // --- Tiptap UI ---
 import { HeadingDropdownMenu } from '@/shared/components/tiptap-ui/tiptap-ui/heading-dropdown-menu';
@@ -72,9 +72,7 @@ import {
 } from '@/shared/libs/tiptap/tiptap-utils';
 
 // --- Styles ---
-import '@/components/tiptap-templates/simple/simple-editor.scss';
-
-import content from '@/components/tiptap-templates/simple/data/content.json';
+import '@/shared/components/tiptap-ui/tiptap-templates/simple/simple-editor.scss';
 
 const MainToolbarContent = ({
 	onHighlighterClick,
@@ -177,7 +175,10 @@ const MobileToolbarContent = ({
 	</>
 );
 
-export function SimpleEditor() {
+export function SimpleEditor({
+	content,
+	onSave,
+}: { content: any; onSave: (newContent: any) => void }) {
 	const isMobile = useMobile();
 	const windowSize = useWindowSize();
 	const [mobileView, setMobileView] = React.useState<

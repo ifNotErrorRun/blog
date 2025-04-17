@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Separator } from '@/shared/components/tiptap-ui/tiptap-ui-primitive/separator';
-import '@/components/tiptap-ui-primitive/toolbar/toolbar.scss';
+import '@/shared/components/tiptap-ui/tiptap-ui-primitive/toolbar/toolbar.scss';
 
 type BaseProps = React.HTMLAttributes<HTMLDivElement>;
 

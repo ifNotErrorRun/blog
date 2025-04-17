@@ -25,7 +25,7 @@ import {
 import { Separator } from '@/shared/components/tiptap-ui/tiptap-ui-primitive/separator';
 
 // --- Styles ---
-import '@/components/tiptap-ui/highlight-popover/highlight-popover.scss';
+import '@/shared/components/tiptap-ui/tiptap-ui/highlight-popover/highlight-popover.scss';
 
 export interface HighlightColor {
 	label: string;

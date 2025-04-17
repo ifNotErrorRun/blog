@@ -1,13 +1,12 @@
-import { ImageUploadNode asaImageUploadNodeComponentageUploadN/shared/components / tiptap - ui / odeCom - node / image - upload - nodepimage - upload - node } from "@/shared/components/tiptap-ui/tiptap-node/image-upload-node/image-upload-node"
+import { ImageUploadNode as ImageUploadNodeComponent } from "@/shared/components/tiptap-ui/tiptap-node/image-upload-node/image-upload-node"
 import { Node, mergeAttributes } from "@tiptap/react"
-import {
-  ReactNodeViewRenderer"react
+import { ReactNodeViewRenderer } from "@tiptap/react"
 
 export type UploadFunction = (
-    file: File,
-    onProgress?: (event: { progress: number }) => void,
-    abortSignal?: AbortSignal
-  ) => Promise<string>
+  file: File,
+  onProgress?: (event: { progress: number }) => void,
+  abortSignal?: AbortSignal
+) => Promise<string>
 
 export interface ImageUploadNodeOptions {
   /**
@@ -106,12 +105,12 @@ export const ImageUploadNode = Node.create<ImageUploadNodeOptions>({
     return {
       setImageUploadNode:
         (options = {}) =>
-          ({ commands }) => {
-            return commands.insertContent({
-              type: this.name,
-              attrs: options,
-            })
-          },
+        ({ commands }) => {
+          return commands.insertContent({
+            type: this.name,
+            attrs: options,
+          })
+        },
     }
   },
 
